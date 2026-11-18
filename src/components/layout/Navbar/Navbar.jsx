@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Coffee } from "lucide-react";
 import Container from "../../ui/Container";
 
 const navItems = [
@@ -20,8 +20,8 @@ function Navbar() {
     <header className="navbar">
       <Container className="navbar__inner">
         <Link to="/" className="navbar__brand" onClick={closeMenu}>
-          <span className="navbar__brand-icon">S.</span>
-          <span>Simple Café</span>
+          <span className="navbar__brand-icon"><Coffee size={18} strokeWidth={1.7} /></span>
+          <span className="navbar__brand-copy"><strong>Simple Café</strong><small>COFFEE · KITCHEN · MOMENTS</small></span>
         </Link>
 
         <nav className={`navbar__nav ${menuOpen ? "is-open" : ""}`}>

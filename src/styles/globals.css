@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap");
 
 @import "tailwindcss";
 @import "locomotive-scroll/dist/locomotive-scroll.css";
@@ -1140,4 +1141,260 @@ main {
     visibility: visible !important;
     transform: none !important;
   }
+}
+
+
+/* =====================================================
+   SIGNATURE ART DIRECTION — custom café experience
+   Brand palette intentionally unchanged.
+===================================================== */
+:root {
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "DM Sans", Arial, sans-serif;
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+}
+
+html { scroll-padding-top: 92px; }
+body { letter-spacing: -.012em; }
+::selection { background: var(--color-accent); color: var(--color-background); }
+
+/* Floating, architectural navigation */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(73,54,41,.09);
+  background: rgba(248,246,239,.88);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+.navbar__inner { height: 82px; }
+.navbar__brand { gap: 12px; font-size: 20px; letter-spacing: -.04em; }
+.navbar__brand-icon {
+  width: 42px; height: 42px; border-radius: 14px;
+  color: var(--color-background); background: var(--color-primary);
+  box-shadow: 0 7px 20px rgba(48,35,25,.12);
+}
+.navbar__brand-copy { display: grid; gap: 3px; }
+.navbar__brand-copy strong { font-weight: 600; }
+.navbar__brand-copy small {
+  color: var(--color-muted); font-family: var(--font-body);
+  font-size: 8px; font-weight: 700; letter-spacing: .19em;
+}
+.navbar__nav { gap: clamp(22px, 3vw, 42px); }
+.navbar__link { font-size: 12px; font-weight: 600; letter-spacing: .015em; }
+.navbar__link.active::after { bottom: -11px; height: 2px; border-radius: 2px; }
+.navbar__cta, .navbar__mobile-cta {
+  min-height: 46px; padding: 0 21px; border-radius: 3px;
+  font-weight: 600; transition: transform .35s var(--ease-out), background .25s ease;
+}
+.navbar__cta:hover { transform: translateY(-3px); background: var(--color-accent); }
+
+/* Hero: cinematic image, deliberate typography and 3D object */
+.hero {
+  min-height: min(790px, calc(100svh - 82px));
+  isolation: isolate;
+  background: var(--color-primary-dark);
+}
+.hero__image {
+  inset: 0 0 0 28%;
+  background-image:
+    linear-gradient(90deg, var(--color-primary-dark) 0%, rgba(48,35,25,.78) 18%, rgba(48,35,25,.16) 72%, rgba(48,35,25,.18) 100%),
+    linear-gradient(0deg, rgba(48,35,25,.34), transparent 48%),
+    url("https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=2200&q=90");
+  background-position: center;
+  transform: scale(1.035);
+  animation: hero-image-enter 1.5s var(--ease-out) both;
+}
+.hero::before {
+  content: "EST. FOR THE EVERYDAY";
+  position: absolute; z-index: 2; right: 34px; top: 50%;
+  color: rgba(248,246,239,.58); font-size: 8px; font-weight: 700;
+  letter-spacing: .28em; writing-mode: vertical-rl;
+}
+.hero__content {
+  width: min(calc(100% - var(--page-padding) * 2), var(--container-width));
+  padding-block: clamp(95px, 12vw, 160px) 75px;
+}
+.hero__eyebrow {
+  width: fit-content; margin-bottom: 27px; padding: 10px 14px;
+  border: 1px solid rgba(215,199,173,.3); border-radius: 99px;
+  background: rgba(48,35,25,.22); font-size: 9px; font-weight: 700;
+  letter-spacing: .2em; backdrop-filter: blur(8px);
+}
+.hero h1 {
+  max-width: 760px; font-size: clamp(60px, 8.6vw, 116px);
+  line-height: .99; letter-spacing: -.065em;
+  text-wrap: balance;
+}
+.hero h1 em { color: #c5c99e; }
+.hero__content > p {
+  max-width: 410px; margin-top: 28px; color: rgba(248,246,239,.78);
+  font-size: 14px; line-height: 1.9;
+}
+.hero__actions { gap: 12px; margin-top: 34px; }
+.hero .button { min-height: 54px; padding-inline: 23px; border-radius: 3px; }
+.hero .button--primary { background: var(--color-accent); }
+.hero .button--primary:hover { background: #89936a; }
+.hero__scroll {
+  gap: 14px; margin-top: clamp(50px, 7vw, 88px);
+  font-size: 8px; font-weight: 700; letter-spacing: .24em;
+}
+.hero__scroll svg { animation: scroll-nudge 1.8s ease-in-out infinite; }
+.hero__scene {
+  top: 51%; right: clamp(2%, 8vw, 12%); width: min(42vw, 550px);
+  height: min(42vw, 550px); opacity: 1;
+  filter: drop-shadow(0 35px 45px rgba(0,0,0,.2));
+}
+
+/* More editorial rhythm; less template-like card repetition */
+.section-padding { padding-block: clamp(88px, 11vw, 156px); }
+.section-label { font-size: 9px; letter-spacing: .23em; font-weight: 700; }
+.section-title { font-size: clamp(42px, 5.4vw, 76px); letter-spacing: -.055em; line-height: 1.04; }
+.intro__grid { grid-template-columns: 1.25fr .75fr; gap: clamp(50px, 9vw, 150px); }
+.intro__text { padding-left: 30px; border-left: 1px solid var(--color-border); }
+.intro__text p { color: var(--color-text); font-size: 15px; line-height: 2; }
+.button { border-radius: 3px; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.button--primary { box-shadow: 0 9px 22px rgba(48,35,25,.12); }
+.button--primary:hover { box-shadow: 0 14px 30px rgba(48,35,25,.17); }
+
+.craft-strip {
+  overflow: hidden; padding: 22px 0;
+  color: var(--color-background); background: var(--color-accent);
+}
+.craft-strip__track {
+  display: flex; width: max-content; gap: 0;
+  animation: craft-marquee 34s linear infinite;
+}
+.craft-strip__track span {
+  display: flex; align-items: center; gap: 34px; padding-right: 34px;
+  white-space: nowrap; font-size: 10px; font-weight: 700; letter-spacing: .22em;
+}
+.craft-strip__track i { color: #d9ddbd; font-size: 15px; font-style: normal; }
+.craft-strip:hover .craft-strip__track { animation-play-state: paused; }
+
+.popular { position: relative; }
+.popular__heading { align-items: end; margin-bottom: 62px; }
+.popular__grid { gap: clamp(18px, 2.5vw, 36px); }
+.food-card { min-width: 0; }
+.food-card__image {
+  height: clamp(280px, 32vw, 430px); overflow: hidden;
+  background: var(--color-surface);
+}
+.food-card__image img { transition: transform 1s var(--ease-out), filter .7s ease; }
+.food-card:hover .food-card__image img { transform: scale(1.055); filter: saturate(.88); }
+.food-card__image span {
+  top: 16px; left: 16px; display: grid; width: 34px; height: 34px;
+  place-items: center; border: 1px solid rgba(255,255,255,.65);
+  border-radius: 50%; background: rgba(48,35,25,.2); backdrop-filter: blur(8px);
+  font-size: 9px; font-weight: 700;
+}
+.food-card__info { align-items: start; padding-top: 19px; }
+.food-card__info h3 { font-size: clamp(19px, 2vw, 25px); letter-spacing: -.025em; }
+.food-card__info p { font-size: 10px; letter-spacing: .04em; }
+.food-card__info strong { font-size: 13px; }
+
+.visit { position: relative; overflow: hidden; }
+.visit::before, .visit::after {
+  content: ""; position: absolute; width: 360px; aspect-ratio: 1;
+  border: 1px solid rgba(197,201,158,.16); border-radius: 50%; pointer-events: none;
+}
+.visit::before { top: -220px; left: -110px; }
+.visit::after { right: -130px; bottom: -250px; width: 480px; }
+.visit__inner { position: relative; z-index: 1; }
+.visit h2 { font-size: clamp(58px, 8vw, 108px); letter-spacing: -.06em; }
+.visit .button { border-radius: 3px; }
+
+/* Inner pages gain a strong opening composition */
+.page-hero { position: relative; overflow: hidden; padding-block: clamp(100px, 13vw, 180px); }
+.page-hero::after {
+  content: "SIMPLE / GOOD / LOCAL"; position: absolute; right: var(--page-padding);
+  bottom: 34px; color: rgba(73,54,41,.28); font-size: 8px;
+  font-weight: 700; letter-spacing: .24em;
+}
+.page-hero h1 { max-width: 900px; font-size: clamp(54px, 8vw, 104px); letter-spacing: -.065em; }
+.page-hero p { max-width: 510px; color: var(--color-text); font-size: 15px; }
+.about-story__grid { gap: clamp(45px, 8vw, 120px); }
+.about-story__grid > .scroll-reveal:first-child img,
+.about-story__grid > img {
+  border-radius: 2px; box-shadow: 22px 22px 0 var(--color-surface);
+}
+.belief__grid { gap: 1px; background: var(--color-border); }
+.belief__item { min-height: 270px; padding: clamp(25px, 3vw, 42px); transition: background .35s ease, transform .35s var(--ease-out); }
+.belief__item:hover { position: relative; z-index: 1; transform: translateY(-7px); background: #fffdf7; }
+.belief__item h3 { font-size: 30px; letter-spacing: -.035em; }
+
+.menu-page__heading h1 { font-size: clamp(54px, 8vw, 100px); letter-spacing: -.065em; }
+.menu-page__heading p { color: var(--color-text); font-size: 14px; }
+.menu-filters { gap: 8px; margin-block: 48px 58px; }
+.menu-filters button { min-width: 92px; border-radius: 99px; font-size: 10px; font-weight: 700; letter-spacing: .04em; }
+.menu-filters button.active { background: var(--color-accent); border-color: var(--color-accent); }
+.menu-list { max-width: 920px; }
+.menu-item { align-items: center; padding: 30px 4px; transition: padding .3s var(--ease-out), background .3s ease; }
+.menu-item:hover { padding-inline: 16px; background: rgba(239,235,223,.65); }
+.menu-item h3 { font-size: clamp(23px, 3vw, 30px); letter-spacing: -.035em; }
+.menu-item p { font-size: 12px; }
+.menu-item strong { font-size: 14px; }
+
+.contact-heading { max-width: 850px; }
+.contact-heading h1 { font-size: clamp(54px, 8vw, 100px); letter-spacing: -.065em; }
+.contact-heading p { color: var(--color-text); font-size: 14px; }
+.contact-grid { gap: clamp(45px, 8vw, 120px); }
+.contact-info { padding-top: 12px; }
+.contact-info__item { padding-bottom: 25px; border-bottom: 1px solid var(--color-border); }
+.contact-info__item > svg { width: 19px; height: 19px; }
+.contact-form { padding: clamp(24px, 4vw, 48px); border: 1px solid var(--color-border); background: var(--color-surface); }
+.form-control { border-radius: 2px; background: rgba(248,246,239,.78); }
+.form-control:focus { box-shadow: 0 0 0 3px rgba(120,129,90,.12); }
+
+.footer { position: relative; overflow: hidden; padding-top: clamp(75px, 9vw, 120px); }
+.footer__title { font-size: clamp(56px, 7vw, 94px); letter-spacing: -.06em; }
+.footer__visit { transition: gap .3s var(--ease-out), color .3s ease; }
+.footer__visit:hover { gap: 20px; color: #c5c99e; }
+.footer__bottom { min-height: 100px; }
+.footer__socials a { font-size: 11px; }
+
+/* Entrance and hover motion stays GPU-friendly */
+@keyframes hero-image-enter { from { opacity: .35; transform: scale(1.08); } to { opacity: 1; transform: scale(1.035); } }
+@keyframes scroll-nudge { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+@keyframes craft-marquee { to { transform: translateX(-50%); } }
+
+@media (max-width: 900px) {
+  .hero__image { left: 12%; }
+  .hero__scene { right: -4%; width: 48vw; height: 48vw; opacity: .8; }
+  .intro__grid { gap: 48px; }
+}
+@media (max-width: 700px) {
+  .navbar__inner { height: 72px; }
+  .navbar__brand-copy small { font-size: 7px; }
+  .navbar__nav {
+    top: calc(100% + 1px); padding: 14px var(--page-padding) 24px;
+    background: rgba(248,246,239,.97); backdrop-filter: blur(18px);
+  }
+  .navbar__link { padding: 17px 0; font-size: 14px; }
+  .hero { min-height: 760px; min-height: min(820px, calc(100svh - 72px)); align-items: flex-start; }
+  .hero__image { inset: 0; background-position: 58% center; }
+  .hero__image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(48,35,25,.88), rgba(48,35,25,.3)); }
+  .hero__content { padding-top: clamp(90px, 18vw, 140px); padding-bottom: 50px; }
+  .hero h1 { max-width: 620px; font-size: clamp(58px, 13vw, 82px); }
+  .hero__content > p { max-width: 360px; font-size: 13px; }
+  .hero__scene { right: -54px; bottom: -52px; width: 290px; height: 290px; opacity: .42; }
+  .hero::before { right: 14px; font-size: 7px; }
+  .hero__scroll { margin-top: 48px; }
+  .intro__text { padding-left: 0; border-left: 0; }
+  .popular__heading { gap: 25px; }
+  .food-card__image { height: min(105vw, 420px); }
+  .page-hero::after { right: 20px; bottom: 20px; font-size: 7px; }
+  .belief__item { min-height: 0; }
+  .contact-form { padding: 23px; }
+}
+@media (max-width: 420px) {
+  .hero__actions { gap: 10px; }
+  .hero__actions .button { width: 100%; }
+  .craft-strip { padding-block: 17px; }
+  .craft-strip__track span { font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .craft-strip__track, .hero__image, .hero__scroll svg { animation: none !important; }
+  .food-card__image img { transition: none; }
 }

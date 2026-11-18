@@ -92,6 +92,16 @@ function Home() {
         </Container>
       </section>
 
+      <section className="craft-strip" aria-label="The Simple Café experience">
+        <div className="craft-strip__track">
+          {Array.from({ length: 4 }, (_, index) => (
+            <span key={index}>
+              SLOW COFFEE <i>✳</i> FRESHLY MADE <i>✳</i> GOOD MOMENTS <i>✳</i>
+            </span>
+          ))}
+        </div>
+      </section>
+
       <section className="popular section-padding">
         <Container>
           <ScrollReveal className="popular__heading">
